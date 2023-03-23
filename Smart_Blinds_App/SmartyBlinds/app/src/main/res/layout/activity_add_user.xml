@@ -5,11 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/livingroom"
-    tools:context=".RegisterUser">
+    tools:context=".add_user">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="281dp"
-        android:layout_height="479dp"
+        android:layout_width="276dp"
+        android:layout_height="263dp"
         android:background="@drawable/roundbox"
         android:backgroundTint="#E1978368"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -18,76 +18,22 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <EditText
-            android:id="@+id/passwordRegister"
+            android:id="@+id/new_user_email"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="36dp"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="28dp"
             android:background="#FFFFFF"
             android:backgroundTint="#A6FFFFFF"
             android:ems="10"
-            android:hint="Password"
-            android:inputType="textPersonName|textPassword"
-            android:minHeight="48dp"
-            android:textAlignment="center"
-            android:textColor="#000000"
-            android:textColorHint="#000000"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/emailRegister" />
-
-        <EditText
-            android:id="@+id/rePassword"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="36dp"
-            android:layout_marginTop="12dp"
-            android:background="#FFFFFF"
-            android:backgroundTint="#A6FFFFFF"
-            android:ems="10"
-            android:hint="Re-Password"
-            android:inputType="textPersonName|textPassword"
-            android:minHeight="48dp"
-            android:textAlignment="center"
-            android:textColor="#000000"
-            android:textColorHint="#000000"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/passwordRegister" />
-
-        <EditText
-            android:id="@+id/fullName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="36dp"
-            android:layout_marginTop="40dp"
-            android:background="#FFFFFF"
-            android:backgroundTint="#A6FFFFFF"
-            android:ems="10"
-            android:hint="Name"
+            android:hint="Email of Additional User"
             android:inputType="textPersonName"
             android:minHeight="48dp"
             android:textAlignment="center"
             android:textColor="#000000"
             android:textColorHint="#000000"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/subtitle2" />
-
-        <EditText
-            android:id="@+id/emailRegister"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="36dp"
-            android:layout_marginTop="12dp"
-            android:background="#FFFFFF"
-            android:backgroundTint="#A6FFFFFF"
-            android:ems="10"
-            android:hint="Email"
-            android:inputType="textPersonName"
-            android:minHeight="48dp"
-            android:textAlignment="center"
-            android:textColor="#000000"
-            android:textColorHint="#000000"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fullName" />
+            app:layout_constraintTop_toBottomOf="@+id/subtitle3" />
 
         <TextView
             android:id="@+id/title2"
@@ -108,33 +54,33 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/subtitle2"
+            android:id="@+id/subtitle3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="104dp"
+            android:layout_marginStart="108dp"
             android:layout_marginTop="4dp"
             android:shadowColor="#000000"
             android:shadowDx="5"
             android:shadowDy="3"
             android:shadowRadius="2"
-            android:text="Registration"
+            android:text="Add a User"
             android:textAlignment="center"
             android:textColor="#FFFFFF"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/title2" />
 
         <Button
-            android:id="@+id/registerUser"
+            android:id="@+id/add_user_button"
             android:layout_width="211dp"
             android:layout_height="42dp"
             android:layout_marginStart="36dp"
-            android:layout_marginBottom="28dp"
+            android:layout_marginBottom="24dp"
             android:background="#87523B"
             android:shadowColor="#000000"
             android:shadowDx="5"
             android:shadowDy="5"
             android:shadowRadius="2"
-            android:text="Register"
+            android:text="Add User"
             android:textColor="#F8F7F7"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />

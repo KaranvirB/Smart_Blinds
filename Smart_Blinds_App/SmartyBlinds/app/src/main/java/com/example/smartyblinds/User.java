@@ -2,16 +2,17 @@ package com.example.smartyblinds;
 
 public class User {
 
-    public String Name, email, serial;
+    public String Name, email;
+    public int total;
 
     public User(){
 
     }
 
-    public User(String Name, String email, String serial){
+    public User(String Name, String email, int total){
         this.Name = Name;
         this.email = email;
-        this.serial = serial;
+        this.total = total;
     }
 
 }

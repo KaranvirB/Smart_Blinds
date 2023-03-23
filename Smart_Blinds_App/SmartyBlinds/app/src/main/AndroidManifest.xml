@@ -13,6 +13,27 @@
         android:theme="@style/Theme.SmartyBlinds"
         tools:targetApi="31">
         <activity
+            android:name=".add_user"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".CurrentBlind"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".BlindCreator"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".RegisterUser"
             android:exported="false">
             <meta-data

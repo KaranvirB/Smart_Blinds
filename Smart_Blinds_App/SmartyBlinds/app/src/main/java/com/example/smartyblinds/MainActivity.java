@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
 
     private TextView register;
     private EditText email_log, password_log;
-    private Button Login;
+    private Button Login, debug;
 
     private FirebaseAuth mAuth;
 
@@ -45,8 +45,28 @@ public class MainActivity extends AppCompatActivity {
 
 
         //Log user in
-        Login.setOnClickListener(view1 -> {
+        Login.setOnClickListener(view -> {
             userLogin();
+        });
+
+
+        //Debug
+        debug = findViewById(R.id.debug);
+        debug.setOnClickListener(view -> {
+            //Retrieve user from FireBase
+            mAuth.signInWithEmailAndPassword("bojczuk.nathan@gmail.com","Abcdefg123!").addOnCompleteListener(task -> {
+
+                if(task.isSuccessful()){
+                    Intent i = new Intent(MainActivity.this,HomePage.class);
+                    //Transfer data between activities
+                    i.putExtra("code","yo");
+                    i.putExtra("code2","yo2");
+                    startActivity(i);
+                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                }else{
+                    Toast.makeText(MainActivity.this, "Login Failed! Please try again.", Toast.LENGTH_SHORT).show();
+                }
+            });
         });
 
     }

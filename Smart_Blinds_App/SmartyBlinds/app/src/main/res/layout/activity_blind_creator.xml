@@ -5,11 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/livingroom"
-    tools:context=".RegisterUser">
+    tools:context=".BlindCreator">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="281dp"
-        android:layout_height="479dp"
+        android:layout_width="286dp"
+        android:layout_height="355dp"
         android:background="@drawable/roundbox"
         android:backgroundTint="#E1978368"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -18,43 +18,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <EditText
-            android:id="@+id/passwordRegister"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="36dp"
-            android:layout_marginTop="12dp"
-            android:background="#FFFFFF"
-            android:backgroundTint="#A6FFFFFF"
-            android:ems="10"
-            android:hint="Password"
-            android:inputType="textPersonName|textPassword"
-            android:minHeight="48dp"
-            android:textAlignment="center"
-            android:textColor="#000000"
-            android:textColorHint="#000000"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/emailRegister" />
-
-        <EditText
-            android:id="@+id/rePassword"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="36dp"
-            android:layout_marginTop="12dp"
-            android:background="#FFFFFF"
-            android:backgroundTint="#A6FFFFFF"
-            android:ems="10"
-            android:hint="Re-Password"
-            android:inputType="textPersonName|textPassword"
-            android:minHeight="48dp"
-            android:textAlignment="center"
-            android:textColor="#000000"
-            android:textColorHint="#000000"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/passwordRegister" />
-
-        <EditText
-            android:id="@+id/fullName"
+            android:id="@+id/BlindName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="36dp"
@@ -62,32 +26,32 @@
             android:background="#FFFFFF"
             android:backgroundTint="#A6FFFFFF"
             android:ems="10"
-            android:hint="Name"
+            android:hint="Blind Name"
             android:inputType="textPersonName"
             android:minHeight="48dp"
             android:textAlignment="center"
             android:textColor="#000000"
             android:textColorHint="#000000"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/subtitle2" />
+            app:layout_constraintTop_toBottomOf="@+id/subtitle" />
 
         <EditText
-            android:id="@+id/emailRegister"
+            android:id="@+id/SerialNum"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="36dp"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="20dp"
             android:background="#FFFFFF"
             android:backgroundTint="#A6FFFFFF"
             android:ems="10"
-            android:hint="Email"
+            android:hint="Blind Serial Number"
             android:inputType="textPersonName"
             android:minHeight="48dp"
             android:textAlignment="center"
             android:textColor="#000000"
             android:textColorHint="#000000"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fullName" />
+            app:layout_constraintTop_toBottomOf="@+id/BlindName" />
 
         <TextView
             android:id="@+id/title2"
@@ -108,33 +72,33 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/subtitle2"
+            android:id="@+id/subtitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="104dp"
+            android:layout_marginStart="96dp"
             android:layout_marginTop="4dp"
             android:shadowColor="#000000"
             android:shadowDx="5"
             android:shadowDy="3"
             android:shadowRadius="2"
-            android:text="Registration"
+            android:text="Pair Your Blind"
             android:textAlignment="center"
             android:textColor="#FFFFFF"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/title2" />
 
         <Button
-            android:id="@+id/registerUser"
+            android:id="@+id/pairBlind"
             android:layout_width="211dp"
             android:layout_height="42dp"
             android:layout_marginStart="36dp"
-            android:layout_marginBottom="28dp"
+            android:layout_marginBottom="16dp"
             android:background="#87523B"
             android:shadowColor="#000000"
             android:shadowDx="5"
             android:shadowDy="5"
             android:shadowRadius="2"
-            android:text="Register"
+            android:text="Pair blind"
             android:textColor="#F8F7F7"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />

@@ -21,11 +21,7 @@ import com.google.firebase.database.ValueEventListener;
 
 public class RegisterUser extends AppCompatActivity {
 
-    FirebaseDatabase firebaseDatabase;
-
-    private DatabaseReference databaseReference;
-
-    private EditText serial_reg, name_reg, email_reg, password_reg, rePassword;
+    private EditText name_reg, email_reg, password_reg, rePassword;
 
     private FirebaseAuth mAuth;
 
@@ -38,7 +34,6 @@ public class RegisterUser extends AppCompatActivity {
 
         //Initialize views
         Button but_button_reg = findViewById(R.id.registerUser);
-        serial_reg = findViewById(R.id.SerialNum);
         name_reg = findViewById(R.id.fullName);
         email_reg = findViewById(R.id.emailRegister);
         password_reg = findViewById(R.id.passwordRegister);
@@ -48,20 +43,13 @@ public class RegisterUser extends AppCompatActivity {
         but_button_reg.setOnClickListener(view -> registerUser());
     }
 
-
     private void registerUser() {
-        String serial = serial_reg.getText().toString().trim();
         String name = name_reg.getText().toString().trim();
         String email = email_reg.getText().toString().trim();
         String password = password_reg.getText().toString().trim();
         String Repassword = rePassword.getText().toString().trim();
 
         //Input Validation
-        if (serial.isEmpty()) {
-            serial_reg.setError("Serial Number is required!");
-            serial_reg.requestFocus();
-            return;
-        }
         if (name.isEmpty()) {
             name_reg.setError("Name is required!");
             name_reg.requestFocus();
@@ -93,60 +81,23 @@ public class RegisterUser extends AppCompatActivity {
             return;
         }
 
-        //See if blinds exist
-        firebaseDatabase = FirebaseDatabase.getInstance();
-        databaseReference = firebaseDatabase.getReference("Blinds/" + serial + "/User");
-        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                if (dataSnapshot.exists()) {
-                    //Check if blinds are already registered with another user
-                    String registeredEmail = dataSnapshot.getValue(String.class);
-                    if (registeredEmail.equals("NULL")) {
-                        //Create user in FireBase
-                        mAuth.createUserWithEmailAndPassword(email, password)
-                                .addOnCompleteListener(RegisterUser.this, task -> {
-                                    if (task.isSuccessful()) {
-                                        //Add user attributes to realtime database
-                                        User user = new User(name, email, serial);
-                                        FirebaseDatabase.getInstance().getReference("Users")
-                                                .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
-                                                .setValue(user);
-                                        //Set the blinds to be registered under this user.
-                                        databaseReference.setValue(email);
-                                        Toast.makeText(RegisterUser.this, "Registration Success!", Toast.LENGTH_SHORT).show();
-                                        //Send user back to login page
-                                        startActivity(new Intent(RegisterUser.this, MainActivity.class));
-                                    } else {
-                                        // If sign in fails, display a message to the user.
-                                        Toast.makeText(RegisterUser.this, "Error in Registration!", Toast.LENGTH_SHORT).show();
-                                    }
-                                });
+        //Create user in FireBase
+        mAuth.createUserWithEmailAndPassword(email, password)
+                .addOnCompleteListener(RegisterUser.this, task -> {
+                    if (task.isSuccessful()) {
+                        //Add user attributes to realtime database
+                        User user = new User(name, email.toLowerCase(), 0);
+                        FirebaseDatabase.getInstance().getReference("Users")
+                                .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                                .setValue(user);
+
+                        Toast.makeText(RegisterUser.this, "Registration Success!", Toast.LENGTH_SHORT).show();
+                        //Send user back to login page
+                        startActivity(new Intent(RegisterUser.this, MainActivity.class));
                     } else {
-                        // The blinds are already registered with another user, show an error message
-                        serial_reg.setError("Blinds are already registered with another user!");
-                        serial_reg.requestFocus();
+                        // If sign in fails, display a message to the user.
+                        Toast.makeText(RegisterUser.this, "Error in Registration!", Toast.LENGTH_SHORT).show();
                     }
-                } else {
-                    // The reference does not exist in the database
-                    serial_reg.setError("Serial Number does not exist!");
-                    serial_reg.requestFocus();
-                    return;
-                }
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                System.out.println("Error checking if the reference exists: " + databaseError.getMessage());
-            }
-        });
-
-        }
-
-
-
-
-
-
-
+                });
+    }
 }
