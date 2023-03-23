@@ -242,27 +242,5 @@ void loop() {
 
     iteration = 0;
   }
-
-
-  //   if (Firebase.getInt(firebaseData, "SetLight")) {
-
-  //   if (firebaseData.dataType() == "int") {
-  //     SetLight = firebaseData.intData();
-  //     Serial.println(action);
-  //   }
-  // }
-
-//   if(SetLight != 0 && blindState == 1){
-//     if (val > SetLight){
-//       rollDown();
-//       blindState = 0;
-//     }
-//   }
-// if(SetLight != 0 && blindState == 0){
-//   if (val < SetLight){
-//       rollUp();
-//       blindState = 1;
-//     }
-// }
   
 }

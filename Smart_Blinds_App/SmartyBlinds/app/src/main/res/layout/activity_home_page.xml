@@ -10,8 +10,8 @@
         android:id="@+id/title3"
         android:layout_width="199dp"
         android:layout_height="49dp"
-        android:layout_marginStart="104dp"
-        android:layout_marginTop="56dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
         android:fontFamily="sans-serif-condensed-medium"
         android:text="Smart Blinds"
         android:textSize="38sp"
@@ -22,8 +22,8 @@
         android:id="@+id/subtitle3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="184dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
         android:text="Home"
         android:textColor="#000000"
         app:layout_constraintStart_toStartOf="parent"
@@ -39,7 +39,7 @@
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ON_button"
-        app:layout_constraintVertical_bias="0.066" />
+        app:layout_constraintVertical_bias="0.738" />
 
     <Button
         android:id="@+id/ON_button"
@@ -51,5 +51,16 @@
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/subtitle3"
-        app:layout_constraintVertical_bias="0.302" />
+        app:layout_constraintVertical_bias="0.824" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="186dp"
+        android:layout_height="123dp"
+        android:layout_marginStart="128dp"
+        android:layout_marginTop="116dp"
+        android:scaleType="fitXY"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/blinds" />
 </androidx.constraintlayout.widget.ConstraintLayout>
