@@ -9,14 +9,35 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
-        android:layout_width="335dp"
-        android:layout_height="625dp"
+        android:layout_width="334dp"
+        android:layout_height="669dp"
         android:background="@drawable/roundbox"
         android:backgroundTint="#E1978368"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
+
+        <EditText
+            android:id="@+id/set_length"
+            android:layout_width="237dp"
+            android:layout_height="47dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:background="#FFFFFF"
+            android:backgroundTint="#A6FFFFFF"
+            android:ems="10"
+            android:hint="Set Blind Closing Length (Max 60 inch)"
+            android:inputType="number"
+            android:minHeight="48dp"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textColorHint="#000000"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toStartOf="@+id/set_length_button"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/current_temp" />
 
         <Button
             android:id="@+id/turn_off_auto"
@@ -249,6 +270,23 @@
             android:textColor="#F8F7F7"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/set_length_button"
+            android:layout_width="47dp"
+            android:layout_height="47dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:background="#254E22"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:shadowColor="#000000"
+            android:shadowDx="5"
+            android:shadowDy="5"
+            android:shadowRadius="2"
+            android:text="Set"
+            android:textColor="#F8F7F7"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/current_temp" />
 
         <Button
             android:id="@+id/schedule_button"

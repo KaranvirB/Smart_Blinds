@@ -28,6 +28,7 @@ int Total_Data = 0;
 int SetLight = 0;
 String Operation = "";
 int iteration = 0;
+int Length = 0;
 
 int lightPin = A4;
 
@@ -48,18 +49,18 @@ byte set_hour = 0;
 byte set_minute = 0;
 byte set_second = 0;
 
-void rollUp(){
+void rollUp(int L){
   //Triggers on a falling edge, a click
   digitalWrite(3, LOW);
-  delay(10000);
+  delay(L);
   digitalWrite(3, HIGH);
   Serial.println("Opened!");
 }
 
-void rollDown(){
+void rollDown(int L){
   //Triggers on a falling edge, a click
   digitalWrite(2, LOW);
-  delay(10000);
+  delay(L);
   digitalWrite(2, HIGH);
   Serial.println("Closed!");
 }
@@ -123,6 +124,7 @@ void setup() {
     Firebase.setInt(firebaseData, "/Blinds/" + SERIAL_NUM + "/Total_Data", 0);
     Firebase.setString(firebaseData, "/Blinds/" + SERIAL_NUM + "/Operation", "Manual");
     Firebase.setString(firebaseData, "/Blinds/" + SERIAL_NUM + "/auto", "ON");
+    Firebase.setInt(firebaseData, "/Blinds/" + SERIAL_NUM + "/length", 10000);
   }
 
 }
@@ -187,11 +189,21 @@ void loop() {
     }
 }
 
+  //Get duration of opening length
+  if (Firebase.getInt(firebaseData,"/Blinds/" + SERIAL_NUM + "/length")) {
+
+    if (firebaseData.dataType() == "int") {
+      Length = firebaseData.intData();
+      Serial.print("length: ");
+      Serial.println(Length);
+    }
+}
+
   //1 for blinds rolled up, 0 for blinds rolled down
 
   //Roll up
   if((action == 1 ) && (lock == 0)){
-    rollUp();
+    rollUp(Length);
     //Do not want to close when already closed
     lock = 1;
     Firebase.setInt(firebaseData,"/Blinds/" + SERIAL_NUM + "/State_Lock", lock);
@@ -213,7 +225,7 @@ void loop() {
   
   //Roll Down
   if((action == 0) && (lock == 1)){
-    rollDown();
+    rollDown(Length);
     //Do not want to close when already closed
     lock = 0;
     Firebase.setInt(firebaseData,"/Blinds/" + SERIAL_NUM + "/State_Lock", lock);

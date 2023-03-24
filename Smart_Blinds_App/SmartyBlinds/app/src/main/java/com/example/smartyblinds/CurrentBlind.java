@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,7 +21,8 @@ import com.google.firebase.database.ValueEventListener;
 public class CurrentBlind extends AppCompatActivity {
 
     TextView textview_blind_name, textview_blind_model, current_state, current_light, current_temp;
-    Button ON_button, OFF_button, add_user, back, turn_auto_on, turn_auto_off, schedule_button;
+    Button ON_button, OFF_button, add_user, back, turn_auto_on, turn_auto_off, schedule_button, set_length_button;
+    EditText set_length;
 
     private DatabaseReference reference;
 
@@ -113,6 +115,39 @@ public class CurrentBlind extends AppCompatActivity {
             iii.putExtra("title",title);
             startActivity(iii);
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+        });
+
+        //Set Blind Closing Length (Inch)
+        set_length = findViewById(R.id.set_length);
+        set_length_button = findViewById(R.id.set_length_button);
+        set_length_button.setOnClickListener(view -> {
+
+            get_current(serial);
+            String inch = set_length.getText().toString().trim();
+
+            //Input Validation
+            if (inch.isEmpty()) {
+                set_length.setError("Length is required!");
+                set_length.requestFocus();
+                return;
+            }
+
+            if (Integer.parseInt(inch) > 60){
+                set_length.setError("Length Exceeds Maximum!");
+                set_length.requestFocus();
+                return;
+            }
+
+            //1 inch is ~400 milliseconds
+            int length_dur = Integer.parseInt(inch) * 400;
+
+            //Want to make sure blinds are rolled up before length is set
+            if (current_state.getText().toString().equals("Rolled Up")) {
+                FirebaseDatabase.getInstance().getReference("Blinds/" + serial + "/length").setValue(length_dur);
+                Toast.makeText(this, "Blind Length Set!", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(this, "Make sure blinds are rolled up first!", Toast.LENGTH_SHORT).show();
+            }
         });
 
     }
