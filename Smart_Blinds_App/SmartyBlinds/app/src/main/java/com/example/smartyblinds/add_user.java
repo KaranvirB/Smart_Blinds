@@ -23,7 +23,7 @@ import java.util.List;
 public class add_user extends AppCompatActivity {
 
     EditText new_user_email;
-    Button add_user_button;
+    Button add_user_button, back3;
 
     private FirebaseAuth mAuth;
     private DatabaseReference reference;
@@ -33,6 +33,13 @@ public class add_user extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_user);
+
+        //Go back to previous activity
+        back3 = findViewById(R.id.back3);
+        back3.setOnClickListener(view -> {
+            startActivity(new Intent(add_user.this, HomePage.class));
+            overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+        });
 
         //Get blind name and serial number from previous activity
         Intent i = getIntent();
@@ -79,7 +86,6 @@ public class add_user extends AppCompatActivity {
                                 FirebaseDatabase.getInstance().getReference("Users").child(userID).child("Reg_Blinds").child(Integer.toString(total)).child("serial").setValue(serial);
                                 FirebaseDatabase.getInstance().getReference("Users").child(userID).child("total").setValue(total);
 
-                                // Send user back to home page
                                 Toast.makeText(add_user.this, "Successfully Added User!", Toast.LENGTH_SHORT).show();
                             }
 

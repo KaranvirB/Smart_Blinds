@@ -58,7 +58,7 @@
             android:layout_height="51dp"
             android:layout_marginStart="16dp"
             android:layout_marginBottom="16dp"
-            android:background="#87523B"
+            android:background="#9C4141"
             android:fontFamily="sans-serif-condensed-medium"
             android:shadowColor="#000000"
             android:shadowDx="5"
@@ -71,17 +71,18 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
-            android:layout_width="311dp"
-            android:layout_height="432dp"
-            android:layout_marginStart="12dp"
-            android:layout_marginTop="12dp"
+            android:layout_width="302dp"
+            android:layout_height="435dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.484"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/greeting2" />
 
         <Button
             android:id="@+id/addButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="97dp"
+            android:layout_height="48dp"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="16dp"
             android:background="#87523B"

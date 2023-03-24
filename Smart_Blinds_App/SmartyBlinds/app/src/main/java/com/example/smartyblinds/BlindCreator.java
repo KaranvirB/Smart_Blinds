@@ -3,6 +3,7 @@ package com.example.smartyblinds;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
@@ -27,9 +28,10 @@ public class BlindCreator extends AppCompatActivity {
     private DatabaseReference reference;
     private String userID;
 
-    Button pairBlind;
+    Button pairBlind, back2;
     EditText BlindName, SerialNum;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +40,13 @@ public class BlindCreator extends AppCompatActivity {
         //Get email from previous activity
         Intent i = getIntent();
         String email = i.getStringExtra("email");
+
+        //Go back to previous activity
+        back2 = findViewById(R.id.back2);
+        back2.setOnClickListener(view -> {
+            startActivity(new Intent(BlindCreator.this, HomePage.class));
+            overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+        });
 
         //Pair blind
         pairBlind = findViewById(R.id.pairBlind);
@@ -88,14 +97,11 @@ public class BlindCreator extends AppCompatActivity {
                                     int total = dataSnapshot2.getValue(Integer.class);
                                     total += 1;
 
-
                                     reference.child(userID).child("Reg_Blinds").child(Integer.toString(total)).child("title").setValue(name);
                                     reference.child(userID).child("Reg_Blinds").child(Integer.toString(total)).child("serial").setValue(serial);
                                     reference.child(userID).child("total").setValue(total);
 
-                                    //Send user back to home page
-                                    startActivity(new Intent(BlindCreator.this, HomePage.class));
-
+                                    Toast.makeText(BlindCreator.this, "Successfully Paired Blinds!", Toast.LENGTH_SHORT).show();
                                 }
 
                                 @Override

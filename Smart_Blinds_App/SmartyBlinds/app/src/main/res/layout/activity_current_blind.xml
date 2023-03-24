@@ -4,12 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CurrentBlind"
-    android:background="@drawable/livingroom">
+    android:background="@drawable/livingroom"
+    tools:context=".CurrentBlind">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="333dp"
-        android:layout_height="599dp"
+        android:id="@+id/constraintLayout"
+        android:layout_width="335dp"
+        android:layout_height="625dp"
         android:background="@drawable/roundbox"
         android:backgroundTint="#E1978368"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -18,11 +19,46 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <Button
-            android:id="@+id/OFF_button"
-            android:layout_width="256dp"
-            android:layout_height="52dp"
-            android:layout_marginStart="36dp"
+            android:id="@+id/turn_off_auto"
+            android:layout_width="86dp"
+            android:layout_height="37dp"
+            android:layout_marginEnd="16dp"
             android:layout_marginBottom="16dp"
+            android:background="#9C4141"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:shadowColor="#000000"
+            android:shadowDx="5"
+            android:shadowDy="5"
+            android:shadowRadius="2"
+            android:text="turn auto off"
+            android:textColor="#F8F7F7"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <Button
+            android:id="@+id/turn_on_auto"
+            android:layout_width="86dp"
+            android:layout_height="37dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:background="#4A9C41"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:shadowColor="#000000"
+            android:shadowDx="5"
+            android:shadowDy="5"
+            android:shadowRadius="2"
+            android:text="turn auto on"
+            android:textColor="#F8F7F7"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <Button
+            android:id="@+id/OFF_button"
+            android:layout_width="298dp"
+            android:layout_height="54dp"
+            android:layout_marginBottom="72dp"
             android:background="#87523B"
             android:fontFamily="sans-serif-condensed-medium"
             android:shadowColor="#000000"
@@ -32,13 +68,13 @@
             android:text="Roll blinds down"
             android:textColor="#F8F7F7"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
         <Button
             android:id="@+id/ON_button"
-            android:layout_width="256dp"
-            android:layout_height="52dp"
-            android:layout_marginStart="36dp"
+            android:layout_width="298dp"
+            android:layout_height="54dp"
             android:layout_marginBottom="12dp"
             android:background="#87523B"
             android:fontFamily="sans-serif-condensed-medium"
@@ -49,12 +85,13 @@
             android:text="Roll blinds up"
             android:textColor="#F8F7F7"
             app:layout_constraintBottom_toTopOf="@+id/OFF_button"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
         <Button
             android:id="@+id/add_user"
-            android:layout_width="38dp"
-            android:layout_height="39dp"
+            android:layout_width="55dp"
+            android:layout_height="38dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:background="#87523B"
@@ -92,6 +129,8 @@
             android:layout_width="297dp"
             android:layout_height="36dp"
             android:layout_marginStart="16dp"
+            android:background="#000000"
+            android:backgroundTint="#9A020202"
             android:fontFamily="sans-serif-condensed-medium"
             android:shadowColor="#000000"
             android:shadowDx="5"
@@ -191,6 +230,23 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textview_blind_model"
             app:srcCompat="@drawable/blinds" />
+
+        <Button
+            android:id="@+id/back"
+            android:layout_width="86dp"
+            android:layout_height="37dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="16dp"
+            android:background="#4E2F22"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:shadowColor="#000000"
+            android:shadowDx="5"
+            android:shadowDy="5"
+            android:shadowRadius="2"
+            android:text="back"
+            android:textColor="#F8F7F7"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

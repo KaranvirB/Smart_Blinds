@@ -91,7 +91,7 @@ public class HomePage extends AppCompatActivity {
                         Intent i = new Intent(HomePage.this, BlindCreator.class);
                         i.putExtra("email",email);
                         startActivity(i);
-                        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+                        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                     });
 
 

@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -19,9 +20,11 @@ import com.google.firebase.database.ValueEventListener;
 public class CurrentBlind extends AppCompatActivity {
 
     TextView textview_blind_name, textview_blind_model, current_state, current_light, current_temp;
-    Button ON_button, OFF_button, add_user;
+    Button ON_button, OFF_button, add_user, back, turn_auto_on, turn_auto_off;
 
     private DatabaseReference reference;
+
+    String auto = "ON";
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -38,6 +41,34 @@ public class CurrentBlind extends AppCompatActivity {
         textview_blind_name.setText(title);
 
         get_current(serial);
+
+        //Buttons to turn auto on/off
+        turn_auto_on = findViewById(R.id.turn_on_auto);
+        turn_auto_off = findViewById(R.id.turn_off_auto);
+
+        if (auto == "ON"){
+            turn_auto_off.setVisibility(View.VISIBLE);
+            turn_auto_on.setVisibility(View.GONE);
+        } else{
+            turn_auto_off.setVisibility(View.GONE);
+            turn_auto_on.setVisibility(View.VISIBLE);
+        }
+
+        turn_auto_off.setOnClickListener(view -> {
+            FirebaseDatabase.getInstance().getReference("Blinds").child(serial).child("auto").setValue("OFF");
+            get_current(serial);
+            turn_auto_off.setVisibility(View.GONE);
+            turn_auto_on.setVisibility(View.VISIBLE);
+            Toast.makeText(this, "Auto Mode Disabled!", Toast.LENGTH_SHORT).show();
+        });
+
+        turn_auto_on.setOnClickListener(view -> {
+            FirebaseDatabase.getInstance().getReference("Blinds").child(serial).child("auto").setValue("ON");
+            get_current(serial);
+            turn_auto_off.setVisibility(View.VISIBLE);
+            turn_auto_on.setVisibility(View.GONE);
+            Toast.makeText(this, "Auto Mode Enabled!", Toast.LENGTH_SHORT).show();
+        });
 
         //Roll Blinds Up
         ON_button = findViewById(R.id.ON_button);
@@ -67,6 +98,13 @@ public class CurrentBlind extends AppCompatActivity {
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         });
 
+        //Go back to previous activity
+        back = findViewById(R.id.back);
+        back.setOnClickListener(view -> {
+            startActivity(new Intent(CurrentBlind.this, HomePage.class));
+            overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+        });
+
     }
 
     private void get_current(String x){
@@ -88,7 +126,7 @@ public class CurrentBlind extends AppCompatActivity {
                 current_light = findViewById(R.id.current_light);
                 current_temp = findViewById(R.id.current_temp);
 
-                if(state == 1){
+                if (state == 1) {
                     current_state.setText("Rolled Up");
                 } else {
                     current_state.setText("Rolled Down");
@@ -96,6 +134,11 @@ public class CurrentBlind extends AppCompatActivity {
 
                 current_light.setText("Light: " + Integer.toString(light));
                 current_temp.setText("Temperature: " + Double.toString(temp));
+
+                //Buttons to turn auto on/off
+                auto = dataSnapshot.child("auto").getValue(String.class);
+
+
             }
 
             @Override
