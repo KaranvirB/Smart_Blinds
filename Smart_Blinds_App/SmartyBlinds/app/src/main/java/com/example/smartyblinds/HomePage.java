@@ -54,6 +54,7 @@ public class HomePage extends AppCompatActivity {
             FirebaseAuth.getInstance().signOut();
             startActivity(new Intent(HomePage.this, MainActivity.class));
             overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+            Toast.makeText(HomePage.this, "Logged out!", Toast.LENGTH_SHORT).show();
         });
 
         user = FirebaseAuth.getInstance().getCurrentUser();

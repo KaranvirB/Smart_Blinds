@@ -20,7 +20,7 @@ import com.google.firebase.database.ValueEventListener;
 public class CurrentBlind extends AppCompatActivity {
 
     TextView textview_blind_name, textview_blind_model, current_state, current_light, current_temp;
-    Button ON_button, OFF_button, add_user, back, turn_auto_on, turn_auto_off;
+    Button ON_button, OFF_button, add_user, back, turn_auto_on, turn_auto_off, schedule_button;
 
     private DatabaseReference reference;
 
@@ -103,6 +103,16 @@ public class CurrentBlind extends AppCompatActivity {
         back.setOnClickListener(view -> {
             startActivity(new Intent(CurrentBlind.this, HomePage.class));
             overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+        });
+
+        //Go to schedule page
+        schedule_button = findViewById(R.id.schedule_button);
+        schedule_button.setOnClickListener(view -> {
+            Intent iii = new Intent(CurrentBlind.this, schedule.class);
+            iii.putExtra("serial",serial);
+            iii.putExtra("title",title);
+            startActivity(iii);
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         });
 
     }

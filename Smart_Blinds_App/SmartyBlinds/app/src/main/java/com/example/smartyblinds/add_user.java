@@ -34,18 +34,22 @@ public class add_user extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_user);
 
-        //Go back to previous activity
-        back3 = findViewById(R.id.back3);
-        back3.setOnClickListener(view -> {
-            startActivity(new Intent(add_user.this, HomePage.class));
-            overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
-        });
-
         //Get blind name and serial number from previous activity
         Intent i = getIntent();
         String title = i.getStringExtra("title");
         String serial = i.getStringExtra("serial");
 
+        //Go back to previous activity
+        back3 = findViewById(R.id.back3);
+        back3.setOnClickListener(view -> {
+            Intent ii = new Intent(add_user.this, CurrentBlind.class);
+            ii.putExtra("serial",serial);
+            ii.putExtra("title",title);
+            startActivity(ii);
+            overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+        });
+
+        //Add a related user to blinds
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
 
         new_user_email = findViewById(R.id.new_user_email);
