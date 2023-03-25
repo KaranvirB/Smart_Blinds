@@ -13,6 +13,27 @@
         android:theme="@style/Theme.SmartyBlinds"
         tools:targetApi="31">
         <activity
+            android:name=".temp_schedule"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".light_schedule"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".time_schedule"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".schedule"
             android:exported="false">
             <meta-data

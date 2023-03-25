@@ -40,7 +40,7 @@
             app:layout_constraintTop_toBottomOf="@+id/current_temp" />
 
         <Button
-            android:id="@+id/turn_off_auto"
+            android:id="@+id/turn_off_ai"
             android:layout_width="90dp"
             android:layout_height="37dp"
             android:layout_marginEnd="16dp"
@@ -51,14 +51,14 @@
             android:shadowDx="5"
             android:shadowDy="5"
             android:shadowRadius="2"
-            android:text="turn auto off"
+            android:text="turn ai off"
             android:textColor="#F8F7F7"
             android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 
         <Button
-            android:id="@+id/turn_on_auto"
+            android:id="@+id/turn_on_ai"
             android:layout_width="90dp"
             android:layout_height="37dp"
             android:layout_marginEnd="16dp"
@@ -69,9 +69,9 @@
             android:shadowDx="5"
             android:shadowDy="5"
             android:shadowRadius="2"
-            android:text="turn auto on"
+            android:text="turn ai on"
             android:textColor="#F8F7F7"
-            android:visibility="gone"
+            android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
@@ -273,11 +273,11 @@
 
         <Button
             android:id="@+id/set_length_button"
-            android:layout_width="47dp"
-            android:layout_height="47dp"
+            android:layout_width="58dp"
+            android:layout_height="46dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
-            android:background="#254E22"
+            android:background="#4A9C41"
             android:fontFamily="sans-serif-condensed-medium"
             android:shadowColor="#000000"
             android:shadowDx="5"

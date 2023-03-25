@@ -4,12 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".schedule"
+    tools:context=".temp_schedule"
     android:background="@drawable/livingroom">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="335dp"
-        android:layout_height="340dp"
+        android:layout_height="341dp"
         android:background="@drawable/roundbox"
         android:backgroundTint="#E1978368"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -18,43 +18,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <Button
-            android:id="@+id/turn_on"
-            android:layout_width="90dp"
-            android:layout_height="37dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="16dp"
-            android:background="#4A9C41"
-            android:fontFamily="sans-serif-condensed-medium"
-            android:shadowColor="#000000"
-            android:shadowDx="5"
-            android:shadowDy="5"
-            android:shadowRadius="2"
-            android:text="turn on"
-            android:textColor="#F8F7F7"
-            android:visibility="visible"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
-
-        <Button
-            android:id="@+id/turn_off"
-            android:layout_width="90dp"
-            android:layout_height="37dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="16dp"
-            android:background="#9C4141"
-            android:fontFamily="sans-serif-condensed-medium"
-            android:shadowColor="#000000"
-            android:shadowDx="5"
-            android:shadowDy="5"
-            android:shadowRadius="2"
-            android:text="turn off"
-            android:textColor="#F8F7F7"
-            android:visibility="visible"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
-
-        <Button
-            android:id="@+id/back4"
+            android:id="@+id/back7"
             android:layout_width="86dp"
             android:layout_height="42dp"
             android:layout_marginStart="16dp"
@@ -69,6 +33,24 @@
             android:textColor="#F8F7F7"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
+
+        <EditText
+            android:id="@+id/set_temp"
+            android:layout_width="235dp"
+            android:layout_height="43dp"
+            android:layout_marginTop="12dp"
+            android:background="#FFFFFF"
+            android:backgroundTint="#A6FFFFFF"
+            android:ems="10"
+            android:hint="Do Operation When > Than"
+            android:inputType="number"
+            android:minHeight="48dp"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textColorHint="#000000"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/greeting3" />
 
         <TextView
             android:id="@+id/greeting4"
@@ -91,53 +73,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/time"
-            android:layout_width="302dp"
-            android:layout_height="34dp"
-            android:layout_marginTop="16dp"
-            android:background="#000000"
-            android:backgroundTint="#7C000000"
-            android:fontFamily="sans-serif-condensed-medium"
-            android:shadowColor="#000000"
-            android:shadowDx="5"
-            android:shadowDy="5"
-            android:shadowRadius="3"
-            android:text="Time"
-            android:textAlignment="center"
-            android:textColor="#FFFFFF"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:typeface="normal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.515"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/greeting9" />
-
-        <TextView
-            android:id="@+id/light"
-            android:layout_width="300dp"
-            android:layout_height="33dp"
-            android:layout_marginTop="16dp"
-            android:background="#000000"
-            android:backgroundTint="#7C000000"
-            android:fontFamily="sans-serif-condensed-medium"
-            android:shadowColor="#000000"
-            android:shadowDx="5"
-            android:shadowDy="5"
-            android:shadowRadius="3"
-            android:text="Light"
-            android:textAlignment="center"
-            android:textColor="#FFFFFF"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:typeface="normal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.485"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/time" />
-
-        <TextView
-            android:id="@+id/temp"
+            android:id="@+id/greeting3"
             android:layout_width="300dp"
             android:layout_height="33dp"
             android:layout_marginStart="16dp"
@@ -149,14 +85,14 @@
             android:shadowDx="5"
             android:shadowDy="5"
             android:shadowRadius="3"
-            android:text="Temperature"
+            android:text="Set Temperature"
             android:textAlignment="center"
             android:textColor="#FFFFFF"
             android:textSize="24sp"
             android:textStyle="bold"
             android:typeface="normal"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/light" />
+            app:layout_constraintTop_toBottomOf="@+id/greeting4" />
 
         <TextView
             android:id="@+id/greeting9"
@@ -170,16 +106,69 @@
             android:shadowDx="5"
             android:shadowDy="5"
             android:shadowRadius="3"
-            android:text="Set Schedule Based On:"
+            android:text="Set Operation"
             android:textAlignment="center"
             android:textColor="#FFFFFF"
             android:textSize="24sp"
             android:textStyle="bold"
             android:typeface="normal"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.485"
+            app:layout_constraintHorizontal_bias="0.457"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/greeting4" />
+            app:layout_constraintTop_toBottomOf="@+id/set_temp" />
+
+        <Button
+            android:id="@+id/create_schedule3"
+            android:layout_width="202dp"
+            android:layout_height="42dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:background="#87523B"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:shadowColor="#000000"
+            android:shadowDx="5"
+            android:shadowDy="5"
+            android:shadowRadius="2"
+            android:text="Create Schedule"
+            android:textColor="#F8F7F7"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <RadioGroup
+            android:id="@+id/set_operation3"
+            android:layout_width="270dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="8dp"
+            android:orientation='horizontal'
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.492"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/greeting9">
+
+            <RadioButton
+                android:id="@+id/radioButton_up3"
+                android:layout_width="137dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-condensed-medium"
+                android:shadowColor="#000000"
+                android:shadowDx="5"
+                android:shadowDy="5"
+                android:shadowRadius="3"
+                android:text="Rolled Up"
+                android:textColor="#FFFFFF" />
+
+            <RadioButton
+                android:id="@+id/radioButton_down3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-condensed-medium"
+                android:shadowColor="#000000"
+                android:shadowDx="5"
+                android:shadowDy="5"
+                android:shadowRadius="3"
+                android:text="Rolled Down"
+                android:textColor="#FFFFFF" />
+        </RadioGroup>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

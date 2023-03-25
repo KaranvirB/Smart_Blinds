@@ -123,8 +123,9 @@ void setup() {
     Firebase.setInt(firebaseData, "/Blinds/" + SERIAL_NUM + "/State_Lock", 1);
     Firebase.setInt(firebaseData, "/Blinds/" + SERIAL_NUM + "/Total_Data", 0);
     Firebase.setString(firebaseData, "/Blinds/" + SERIAL_NUM + "/Operation", "Manual");
-    Firebase.setString(firebaseData, "/Blinds/" + SERIAL_NUM + "/auto", "ON");
+    Firebase.setString(firebaseData, "/Blinds/" + SERIAL_NUM + "/AI", "ON");
     Firebase.setInt(firebaseData, "/Blinds/" + SERIAL_NUM + "/length", 10000);
+    Firebase.setString(firebaseData, "/Blinds/" + SERIAL_NUM + "/schedule/ON", "FALSE");
   }
 
 }

@@ -1,5 +1,6 @@
 package com.example.smartyblinds;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 
@@ -8,6 +9,7 @@ import android.app.AlertDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -17,18 +19,18 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.util.Locale;
 
 public class schedule extends AppCompatActivity {
 
-    Button back4, create_schedule;
-    int hour, minute;
-    String days, start_time, end_time = "";
-
-    TextView time_text, time_text2;
-    EditText set_light;
-    CheckBox checkBox1,checkBox2,checkBox3,checkBox4,checkBox5,checkBox6,checkBox7;
-    RadioGroup set_operation;
+    Button back4, turn_on, turn_off;
+    TextView time, light, temp;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -51,94 +53,82 @@ public class schedule extends AppCompatActivity {
             overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
         });
 
-        //Set Dates
-        checkBox1 = findViewById(R.id.checkBox1);
-        checkBox2 = findViewById(R.id.checkBox2);
-        checkBox3 = findViewById(R.id.checkBox3);
-        checkBox4 = findViewById(R.id.checkBox4);
-        checkBox5 = findViewById(R.id.checkBox5);
-        checkBox6 = findViewById(R.id.checkBox6);
-        checkBox7 = findViewById(R.id.checkBox7);
-
-        // Check if each checkbox is checked
-        if (checkBox1.isChecked()) {
-            days += "1";
-        }
-        if (checkBox2.isChecked()) {
-            days += "2";
-        }
-        if (checkBox3.isChecked()) {
-            days += "3";
-        }
-        if (checkBox4.isChecked()) {
-            days += "4";
-        }
-        if (checkBox5.isChecked()) {
-            days += "5";
-        }
-        if (checkBox6.isChecked()) {
-            days += "6";
-        }
-        if (checkBox7.isChecked()) {
-            days += "7";
-        }
-
-        //Set starting time
-        time_text = findViewById(R.id.time_text);
-        time_text.setOnClickListener(view -> {
-            popTimePicker(1);
+        //Go to time scheduler
+        time = findViewById(R.id.time);
+        time.setOnClickListener(view -> {
+            Intent ii = new Intent(schedule.this, time_schedule.class);
+            ii.putExtra("serial",serial);
+            ii.putExtra("title",title);
+            startActivity(ii);
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         });
 
-        //Set ending time
-        time_text2 = findViewById(R.id.time_text2);
-        time_text2.setOnClickListener(view -> {
-            popTimePicker(2);
+        //Go to light scheduler
+        light = findViewById(R.id.light);
+        light.setOnClickListener(view -> {
+            Intent ii = new Intent(schedule.this, light_schedule.class);
+            ii.putExtra("serial",serial);
+            ii.putExtra("title",title);
+            startActivity(ii);
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         });
 
-        //Set Light
-        set_light = findViewById(R.id.set_light);
-        String light = set_light.getText().toString().trim();
-
-        //Set the operation
-        set_operation = findViewById(R.id.set_operation);
-        set_operation.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                RadioButton radioButton = findViewById(checkedId);
-                Toast.makeText(schedule.this, "Selected Radio Button is : " + radioButton.getText(), Toast.LENGTH_SHORT).show();
-            }
+        //Go to temperature scheduler
+        temp = findViewById(R.id.temp);
+        temp.setOnClickListener(view -> {
+            Intent ii = new Intent(schedule.this, temp_schedule.class);
+            ii.putExtra("serial",serial);
+            ii.putExtra("title",title);
+            startActivity(ii);
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         });
 
-        //Set Schedule
-        create_schedule = findViewById(R.id.create_schedule);
-        create_schedule.setOnClickListener(view -> {
+        get_current(serial);
 
+        //Buttons to turn schedule on/off
+        turn_on = findViewById(R.id.turn_on);
+        turn_off = findViewById(R.id.turn_off);
+
+        turn_off.setOnClickListener(view -> {
+            FirebaseDatabase.getInstance().getReference("Blinds").child(serial).child("schedule").child("ON").setValue("FALSE");
+            get_current(serial);
+            Toast.makeText(this, "Schedule Disabled!", Toast.LENGTH_SHORT).show();
         });
+
+        turn_on.setOnClickListener(view -> {
+            FirebaseDatabase.getInstance().getReference("Blinds").child(serial).child("schedule").child("ON").setValue("TRUE");
+            get_current(serial);
+            Toast.makeText(this, "Schedule Enabled!", Toast.LENGTH_SHORT).show();
+        });
+
 
     }
 
-    public void popTimePicker(int x)
-    {
-        TimePickerDialog.OnTimeSetListener onTimeSetListener = new TimePickerDialog.OnTimeSetListener()
-        {
+    //Get current blind data
+    private void get_current(String x) {
+        // Get a reference to the blinds
+        DatabaseReference dataRef = FirebaseDatabase.getInstance().getReference("Blinds").child(x);
+        dataRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute)
-            {
-                hour = selectedHour;
-                minute = selectedMinute;
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                if (x == 1) {
-                    time_text.setText(String.format(Locale.getDefault(), "%02d:%02d", hour, minute));
-                    start_time = String.format(Locale.getDefault(), "%02d:%02d", hour, minute);
-                } else {
-                    time_text2.setText(String.format(Locale.getDefault(), "%02d:%02d", hour, minute));
-                    end_time = String.format(Locale.getDefault(), "%02d:%02d", hour, minute);
+                //Buttons to turn schedule on/off
+                String schedule = dataSnapshot.child("schedule").child("ON").getValue(String.class);
+
+                if (schedule.equals("TRUE")){
+                    turn_off.setVisibility(View.VISIBLE);
+                    turn_on.setVisibility(View.GONE);
+                } else{
+                    turn_off.setVisibility(View.GONE);
+                    turn_on.setVisibility(View.VISIBLE);
                 }
             }
-        };
-        int style = AlertDialog.THEME_HOLO_DARK;
-        TimePickerDialog timePickerDialog = new TimePickerDialog(this, style, onTimeSetListener, hour, minute, false);
-        timePickerDialog.setTitle("Select Time");
-        timePickerDialog.show();
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Toast.makeText(schedule.this, "An error has occurred!", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
+
 }

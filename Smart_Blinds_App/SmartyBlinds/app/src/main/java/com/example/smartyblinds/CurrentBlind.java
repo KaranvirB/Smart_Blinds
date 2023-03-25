@@ -21,12 +21,12 @@ import com.google.firebase.database.ValueEventListener;
 public class CurrentBlind extends AppCompatActivity {
 
     TextView textview_blind_name, textview_blind_model, current_state, current_light, current_temp;
-    Button ON_button, OFF_button, add_user, back, turn_auto_on, turn_auto_off, schedule_button, set_length_button;
+    Button ON_button, OFF_button, add_user, back, turn_ai_on, turn_ai_off, schedule_button, set_length_button;
     EditText set_length;
 
     private DatabaseReference reference;
 
-    String auto = "ON";
+//    String ai = "ON";
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -44,32 +44,20 @@ public class CurrentBlind extends AppCompatActivity {
 
         get_current(serial);
 
-        //Buttons to turn auto on/off
-        turn_auto_on = findViewById(R.id.turn_on_auto);
-        turn_auto_off = findViewById(R.id.turn_off_auto);
+        //Buttons to turn AI on/off
+        turn_ai_on = findViewById(R.id.turn_on_ai);
+        turn_ai_off = findViewById(R.id.turn_off_ai);
 
-        if (auto == "ON"){
-            turn_auto_off.setVisibility(View.VISIBLE);
-            turn_auto_on.setVisibility(View.GONE);
-        } else{
-            turn_auto_off.setVisibility(View.GONE);
-            turn_auto_on.setVisibility(View.VISIBLE);
-        }
-
-        turn_auto_off.setOnClickListener(view -> {
-            FirebaseDatabase.getInstance().getReference("Blinds").child(serial).child("auto").setValue("OFF");
+        turn_ai_off.setOnClickListener(view -> {
+            FirebaseDatabase.getInstance().getReference("Blinds").child(serial).child("AI").setValue("OFF");
             get_current(serial);
-            turn_auto_off.setVisibility(View.GONE);
-            turn_auto_on.setVisibility(View.VISIBLE);
-            Toast.makeText(this, "Auto Mode Disabled!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "AI Mode Disabled!", Toast.LENGTH_SHORT).show();
         });
 
-        turn_auto_on.setOnClickListener(view -> {
-            FirebaseDatabase.getInstance().getReference("Blinds").child(serial).child("auto").setValue("ON");
+        turn_ai_on.setOnClickListener(view -> {
+            FirebaseDatabase.getInstance().getReference("Blinds").child(serial).child("AI").setValue("ON");
             get_current(serial);
-            turn_auto_off.setVisibility(View.VISIBLE);
-            turn_auto_on.setVisibility(View.GONE);
-            Toast.makeText(this, "Auto Mode Enabled!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "AI Mode Enabled!", Toast.LENGTH_SHORT).show();
         });
 
         //Roll Blinds Up
@@ -137,6 +125,11 @@ public class CurrentBlind extends AppCompatActivity {
                 set_length.requestFocus();
                 return;
             }
+            if (Integer.parseInt(inch) <= 0){
+                set_length.setError("Positive non-zero numbers required!");
+                set_length.requestFocus();
+                return;
+            }
 
             //1 inch is ~400 milliseconds
             int length_dur = Integer.parseInt(inch) * 400;
@@ -152,6 +145,7 @@ public class CurrentBlind extends AppCompatActivity {
 
     }
 
+    //Get current blind data
     private void get_current(String x){
         // Get a reference to the blinds
         DatabaseReference dataRef = FirebaseDatabase.getInstance().getReference("Blinds").child(x);
@@ -180,8 +174,15 @@ public class CurrentBlind extends AppCompatActivity {
                 current_light.setText("Light: " + Integer.toString(light));
                 current_temp.setText("Temperature: " + Double.toString(temp));
 
-                //Buttons to turn auto on/off
-                auto = dataSnapshot.child("auto").getValue(String.class);
+                //Buttons to turn AI on/off
+                String ai = dataSnapshot.child("AI").getValue(String.class);
+                if (ai.equals("ON")){
+                    turn_ai_off.setVisibility(View.VISIBLE);
+                    turn_ai_on.setVisibility(View.GONE);
+                } else{
+                    turn_ai_off.setVisibility(View.GONE);
+                    turn_ai_on.setVisibility(View.VISIBLE);
+                }
 
 
             }
