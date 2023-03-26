@@ -90,13 +90,18 @@ public class schedule extends AppCompatActivity {
         turn_off = findViewById(R.id.turn_off);
 
         turn_off.setOnClickListener(view -> {
+            //Set schedule to FALSE in database
             FirebaseDatabase.getInstance().getReference("Blinds").child(serial).child("schedule").child("ON").setValue("FALSE");
             get_current(serial);
             Toast.makeText(this, "Schedule Disabled!", Toast.LENGTH_SHORT).show();
         });
 
         turn_on.setOnClickListener(view -> {
+            //Set schedule to TRUE in database
             FirebaseDatabase.getInstance().getReference("Blinds").child(serial).child("schedule").child("ON").setValue("TRUE");
+
+            //By turing on the schedule, we disable AI mode automatically
+            FirebaseDatabase.getInstance().getReference("Blinds").child(serial).child("AI").setValue("OFF");
             get_current(serial);
             Toast.makeText(this, "Schedule Enabled!", Toast.LENGTH_SHORT).show();
         });

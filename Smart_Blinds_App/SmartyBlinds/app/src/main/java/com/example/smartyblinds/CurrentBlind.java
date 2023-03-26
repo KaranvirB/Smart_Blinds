@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,13 +21,11 @@ import com.google.firebase.database.ValueEventListener;
 
 public class CurrentBlind extends AppCompatActivity {
 
-    TextView textview_blind_name, textview_blind_model, current_state, current_light, current_temp;
-    Button ON_button, OFF_button, add_user, back, turn_ai_on, turn_ai_off, schedule_button, set_length_button;
-    EditText set_length;
+    TextView textview_blind_name;
+    Button ON_button, OFF_button, back, turn_ai_on, turn_ai_off, schedule_button;
+    ImageButton info;
 
     private DatabaseReference reference;
-
-//    String ai = "ON";
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -49,13 +48,18 @@ public class CurrentBlind extends AppCompatActivity {
         turn_ai_off = findViewById(R.id.turn_off_ai);
 
         turn_ai_off.setOnClickListener(view -> {
+            //Set AI to OFF in database
             FirebaseDatabase.getInstance().getReference("Blinds").child(serial).child("AI").setValue("OFF");
             get_current(serial);
             Toast.makeText(this, "AI Mode Disabled!", Toast.LENGTH_SHORT).show();
         });
 
         turn_ai_on.setOnClickListener(view -> {
+            //Set AI to ON in database
             FirebaseDatabase.getInstance().getReference("Blinds").child(serial).child("AI").setValue("ON");
+
+            //By turing on AI, we disable schedule mode automatically
+            FirebaseDatabase.getInstance().getReference("Blinds").child(serial).child("schedule").child("ON").setValue("FALSE");
             get_current(serial);
             Toast.makeText(this, "AI Mode Enabled!", Toast.LENGTH_SHORT).show();
         });
@@ -78,10 +82,10 @@ public class CurrentBlind extends AppCompatActivity {
             Toast.makeText(this, "Blinds Rolled Down!", Toast.LENGTH_SHORT).show();
         });
 
-        //Add a user to blinds
-        add_user= findViewById(R.id.add_user);
-        add_user.setOnClickListener(view -> {
-            Intent ii = new Intent(CurrentBlind.this, add_user.class);
+        //More information page
+        info = findViewById(R.id.info);
+        info.setOnClickListener(view -> {
+            Intent ii = new Intent(CurrentBlind.this, blind_info.class);
             ii.putExtra("serial",serial);
             ii.putExtra("title",title);
             startActivity(ii);
@@ -105,43 +109,6 @@ public class CurrentBlind extends AppCompatActivity {
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         });
 
-        //Set Blind Closing Length (Inch)
-        set_length = findViewById(R.id.set_length);
-        set_length_button = findViewById(R.id.set_length_button);
-        set_length_button.setOnClickListener(view -> {
-
-            get_current(serial);
-            String inch = set_length.getText().toString().trim();
-
-            //Input Validation
-            if (inch.isEmpty()) {
-                set_length.setError("Length is required!");
-                set_length.requestFocus();
-                return;
-            }
-
-            if (Integer.parseInt(inch) > 60){
-                set_length.setError("Length Exceeds Maximum!");
-                set_length.requestFocus();
-                return;
-            }
-            if (Integer.parseInt(inch) <= 0){
-                set_length.setError("Positive non-zero numbers required!");
-                set_length.requestFocus();
-                return;
-            }
-
-            //1 inch is ~400 milliseconds
-            int length_dur = Integer.parseInt(inch) * 400;
-
-            //Want to make sure blinds are rolled up before length is set
-            if (current_state.getText().toString().equals("Rolled Up")) {
-                FirebaseDatabase.getInstance().getReference("Blinds/" + serial + "/length").setValue(length_dur);
-                Toast.makeText(this, "Blind Length Set!", Toast.LENGTH_SHORT).show();
-            } else {
-                Toast.makeText(this, "Make sure blinds are rolled up first!", Toast.LENGTH_SHORT).show();
-            }
-        });
 
     }
 
@@ -153,27 +120,6 @@ public class CurrentBlind extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                // Get current blind data
-                Integer stateObj = dataSnapshot.child("Blind_State").getValue(Integer.class);
-                int state = (stateObj == null) ? 0 : stateObj;
-                Integer stateObj2 = dataSnapshot.child("Current").child("Light").getValue(Integer.class);
-                int light = (stateObj2 == null) ? 0 : stateObj2;
-                Double stateObj3 = dataSnapshot.child("Current").child("Temp").getValue(Double.class);
-                double temp = (stateObj3 == null) ? 0 : stateObj3;
-
-                current_state = findViewById(R.id.current_state);
-                current_light = findViewById(R.id.current_light);
-                current_temp = findViewById(R.id.current_temp);
-
-                if (state == 1) {
-                    current_state.setText("Rolled Up");
-                } else {
-                    current_state.setText("Rolled Down");
-                }
-
-                current_light.setText("Light: " + Integer.toString(light));
-                current_temp.setText("Temperature: " + Double.toString(temp));
-
                 //Buttons to turn AI on/off
                 String ai = dataSnapshot.child("AI").getValue(String.class);
                 if (ai.equals("ON")){
@@ -183,7 +129,6 @@ public class CurrentBlind extends AppCompatActivity {
                     turn_ai_off.setVisibility(View.GONE);
                     turn_ai_on.setVisibility(View.VISIBLE);
                 }
-
 
             }
 

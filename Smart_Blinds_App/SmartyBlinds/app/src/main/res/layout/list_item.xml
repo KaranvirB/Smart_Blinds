@@ -12,7 +12,7 @@
         android:id="@+id/textview_blind_title"
         android:layout_width="247dp"
         android:layout_height="37dp"
-        android:layout_marginStart="12dp"
+        android:layout_marginStart="4dp"
         android:fontFamily="sans-serif-condensed-medium"
         android:shadowColor="#000000"
         android:shadowDx="5"

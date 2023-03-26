@@ -42,7 +42,7 @@ public class add_user extends AppCompatActivity {
         //Go back to previous activity
         back3 = findViewById(R.id.back3);
         back3.setOnClickListener(view -> {
-            Intent ii = new Intent(add_user.this, CurrentBlind.class);
+            Intent ii = new Intent(add_user.this, blind_info.class);
             ii.putExtra("serial",serial);
             ii.putExtra("title",title);
             startActivity(ii);

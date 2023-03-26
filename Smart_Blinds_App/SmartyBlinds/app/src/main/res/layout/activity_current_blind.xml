@@ -9,35 +9,14 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
-        android:layout_width="334dp"
-        android:layout_height="669dp"
+        android:layout_width="333dp"
+        android:layout_height="462dp"
         android:background="@drawable/roundbox"
         android:backgroundTint="#E1978368"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-
-        <EditText
-            android:id="@+id/set_length"
-            android:layout_width="237dp"
-            android:layout_height="47dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:background="#FFFFFF"
-            android:backgroundTint="#A6FFFFFF"
-            android:ems="10"
-            android:hint="Set Blind Closing Length (Max 60 inch)"
-            android:inputType="number"
-            android:minHeight="48dp"
-            android:textAlignment="center"
-            android:textColor="#000000"
-            android:textColorHint="#000000"
-            android:textSize="12sp"
-            app:layout_constraintEnd_toStartOf="@+id/set_length_button"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/current_temp" />
 
         <Button
             android:id="@+id/turn_off_ai"
@@ -81,7 +60,7 @@
             android:id="@+id/OFF_button"
             android:layout_width="298dp"
             android:layout_height="54dp"
-            android:layout_marginBottom="72dp"
+            android:layout_marginBottom="80dp"
             android:background="#87523B"
             android:fontFamily="sans-serif-condensed-medium"
             android:shadowColor="#000000"
@@ -92,6 +71,7 @@
             android:textColor="#F8F7F7"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.485"
             app:layout_constraintStart_toStartOf="parent" />
 
         <Button
@@ -111,28 +91,12 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
-        <Button
-            android:id="@+id/add_user"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:background="#87523B"
-            android:fontFamily="sans-serif-condensed-medium"
-            android:shadowColor="#000000"
-            android:shadowDx="5"
-            android:shadowDy="5"
-            android:shadowRadius="2"
-            android:text="Add\nUser"
-            android:textColor="#F8F7F7"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
         <TextView
             android:id="@+id/textview_blind_model"
             android:layout_width="245dp"
             android:layout_height="44dp"
             android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
             android:fontFamily="sans-serif-condensed-medium"
             android:shadowColor="#000000"
             android:shadowDx="5"
@@ -145,95 +109,13 @@
             android:textStyle="bold"
             android:typeface="normal"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textview_blind_name" />
-
-        <TextView
-            android:id="@+id/cur"
-            android:layout_width="297dp"
-            android:layout_height="36dp"
-            android:layout_marginStart="16dp"
-            android:background="#000000"
-            android:backgroundTint="#9A020202"
-            android:fontFamily="sans-serif-condensed-medium"
-            android:shadowColor="#000000"
-            android:shadowDx="5"
-            android:shadowDy="5"
-            android:shadowRadius="3"
-            android:text="Current Values"
-            android:textAlignment="center"
-            android:textColor="#FFFFFF"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:typeface="normal"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView2" />
-
-        <TextView
-            android:id="@+id/current_light"
-            android:layout_width="297dp"
-            android:layout_height="36dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:fontFamily="sans-serif-condensed-medium"
-            android:shadowColor="#000000"
-            android:shadowDx="5"
-            android:shadowDy="5"
-            android:shadowRadius="3"
-            android:text="current light"
-            android:textAlignment="textStart"
-            android:textColor="#FFFFFF"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:typeface="normal"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/current_state" />
-
-        <TextView
-            android:id="@+id/current_state"
-            android:layout_width="297dp"
-            android:layout_height="36dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:fontFamily="sans-serif-condensed-medium"
-            android:shadowColor="#000000"
-            android:shadowDx="5"
-            android:shadowDy="5"
-            android:shadowRadius="3"
-            android:text="current state"
-            android:textAlignment="textStart"
-            android:textColor="#FFFFFF"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:typeface="normal"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cur" />
-
-        <TextView
-            android:id="@+id/current_temp"
-            android:layout_width="297dp"
-            android:layout_height="36dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:fontFamily="sans-serif-condensed-medium"
-            android:shadowColor="#000000"
-            android:shadowDx="5"
-            android:shadowDy="5"
-            android:shadowRadius="3"
-            android:text="current temp"
-            android:textAlignment="textStart"
-            android:textColor="#FFFFFF"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:typeface="normal"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/current_light" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/textview_blind_name"
             android:layout_width="245dp"
             android:layout_height="42dp"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
             android:fontFamily="sans-serif-condensed-medium"
             android:text="Greeting"
             android:textAlignment="viewStart"
@@ -242,6 +124,26 @@
             android:textStyle="bold"
             android:typeface="normal"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textview_blind_model" />
+
+        <TextView
+            android:id="@+id/textview_blind_name2"
+            android:layout_width="28dp"
+            android:layout_height="22dp"
+            android:layout_marginTop="36dp"
+            android:layout_marginEnd="14dp"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:shadowColor="#000000"
+            android:shadowDx="5"
+            android:shadowDy="5"
+            android:shadowRadius="3"
+            android:text="Info"
+            android:textAlignment="viewStart"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:typeface="normal"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
@@ -251,7 +153,7 @@
             android:layout_marginStart="12dp"
             android:scaleType="fitXY"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textview_blind_model"
+            app:layout_constraintTop_toBottomOf="@+id/textview_blind_name"
             app:srcCompat="@drawable/blinds" />
 
         <Button
@@ -272,23 +174,6 @@
             app:layout_constraintStart_toStartOf="parent" />
 
         <Button
-            android:id="@+id/set_length_button"
-            android:layout_width="58dp"
-            android:layout_height="46dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="16dp"
-            android:background="#4A9C41"
-            android:fontFamily="sans-serif-condensed-medium"
-            android:shadowColor="#000000"
-            android:shadowDx="5"
-            android:shadowDy="5"
-            android:shadowRadius="2"
-            android:text="Set"
-            android:textColor="#F8F7F7"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/current_temp" />
-
-        <Button
             android:id="@+id/schedule_button"
             android:layout_width="90dp"
             android:layout_height="37dp"
@@ -305,6 +190,17 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent" />
+
+        <ImageButton
+            android:id="@+id/info"
+            android:layout_width="50dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="4dp"
+            android:backgroundTint="#00FFFFFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@android:drawable/ic_menu_info_details" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

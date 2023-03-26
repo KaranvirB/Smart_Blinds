@@ -57,25 +57,25 @@ public class time_schedule extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 days = "";
                 if (checkBox1.isChecked()) {
-                    days += "1";
+                    days += "0";
                 }
                 if (checkBox2.isChecked()) {
-                    days += "2";
+                    days += "1";
                 }
                 if (checkBox3.isChecked()) {
-                    days += "3";
+                    days += "2";
                 }
                 if (checkBox4.isChecked()) {
-                    days += "4";
+                    days += "3";
                 }
                 if (checkBox5.isChecked()) {
-                    days += "5";
+                    days += "4";
                 }
                 if (checkBox6.isChecked()) {
-                    days += "6";
+                    days += "5";
                 }
                 if (checkBox7.isChecked()) {
-                    days += "7";
+                    days += "6";
                 }
             }
         };
