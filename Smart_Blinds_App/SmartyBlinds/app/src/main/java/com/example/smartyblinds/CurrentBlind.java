@@ -69,8 +69,13 @@ public class CurrentBlind extends AppCompatActivity {
         ON_button.setOnClickListener(view -> {
             FirebaseDatabase.getInstance().getReference("Blinds/" + serial + "/Operation").setValue("Manual");
             FirebaseDatabase.getInstance().getReference("Blinds/" + serial + "/Blind_State").setValue(1);
+
+            //Disable AI in database
+            FirebaseDatabase.getInstance().getReference("Blinds").child(serial).child("AI").setValue("OFF");
+
             get_current(serial);
-            Toast.makeText(this, "Blinds Rolled Up!", Toast.LENGTH_SHORT).show();
+
+            Toast.makeText(this, "Blinds Rolled Up!\n Auto Disabled!", Toast.LENGTH_SHORT).show();
         });
 
         //Roll Blinds Down
@@ -78,8 +83,13 @@ public class CurrentBlind extends AppCompatActivity {
         OFF_button.setOnClickListener(view -> {
             FirebaseDatabase.getInstance().getReference("Blinds/" + serial + "/Operation").setValue("Manual");
             FirebaseDatabase.getInstance().getReference("Blinds/" + serial + "/Blind_State").setValue(0);
+
+            //Disable AI in database
+            FirebaseDatabase.getInstance().getReference("Blinds").child(serial).child("AI").setValue("OFF");
+
             get_current(serial);
-            Toast.makeText(this, "Blinds Rolled Down!", Toast.LENGTH_SHORT).show();
+
+            Toast.makeText(this, "Blinds Rolled Down!\n Auto Disabled!", Toast.LENGTH_SHORT).show();
         });
 
         //More information page
