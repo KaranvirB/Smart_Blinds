@@ -34,8 +34,8 @@ Using your favourite Android device, install the APK [here.](https://github.com/
 <img src= "https://github.com/NathanBoj/Smart_Blinds/blob/main/images/sched_temp.jpg" width=20% height=20%>
 
 ### Add User Page
-<img src= "https://github.com/NathanBoj/Smart_Blinds/blob/main/App_Screenshots/add_user.jpg" width=20% height=20%>
+<img src= "https://github.com/NathanBoj/Smart_Blinds/blob/main/images/add_user.jpg" width=20% height=20%>
 
 ### Register Blind Page
-<img src= "https://github.com/NathanBoj/Smart_Blinds/blob/main/App_Screenshots/register_blind.jpg" width=20% height=20%>
+<img src= "https://github.com/NathanBoj/Smart_Blinds/blob/main/images/register_blind.jpg" width=20% height=20%>
 
