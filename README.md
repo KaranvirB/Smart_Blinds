@@ -1,5 +1,5 @@
 # Smart_Blinds CAPSTONE 2023
-<img src= "https://github.com/NathanBoj/Smart_Blinds/blob/main/images/poster.jpg" width=70% height=70%>
+<img src= "https://github.com/NathanBoj/Smart_Blinds/blob/main/images/poster.jpg" width=100% height=100%>
 
 ## App Installation:
 Using your favourite Android device, install the APK [here.](https://github.com/NathanBoj/Smart_Blinds/tree/main/app/release)
