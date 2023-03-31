@@ -100,8 +100,8 @@ public class schedule extends AppCompatActivity {
             //Set schedule to TRUE in database
             FirebaseDatabase.getInstance().getReference("Blinds").child(serial).child("schedule").child("ON").setValue("TRUE");
 
-            //By turing on the schedule, we disable AI mode automatically
-            FirebaseDatabase.getInstance().getReference("Blinds").child(serial).child("AI").setValue("OFF");
+            //By turing on the schedule, we disable ML mode automatically
+            FirebaseDatabase.getInstance().getReference("Blinds").child(serial).child("ML").setValue("OFF");
             get_current(serial);
             Toast.makeText(this, "Schedule Enabled!", Toast.LENGTH_SHORT).show();
         });

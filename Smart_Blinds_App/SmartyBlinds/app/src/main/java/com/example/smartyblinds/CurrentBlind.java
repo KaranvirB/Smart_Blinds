@@ -8,7 +8,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,7 +21,7 @@ import com.google.firebase.database.ValueEventListener;
 public class CurrentBlind extends AppCompatActivity {
 
     TextView textview_blind_name;
-    Button ON_button, OFF_button, back, turn_ai_on, turn_ai_off, schedule_button;
+    Button ON_button, OFF_button, back, turn_ml_on, turn_ml_off, schedule_button;
     ImageButton info;
 
     private DatabaseReference reference;
@@ -43,25 +42,25 @@ public class CurrentBlind extends AppCompatActivity {
 
         get_current(serial);
 
-        //Buttons to turn AI on/off
-        turn_ai_on = findViewById(R.id.turn_on_ai);
-        turn_ai_off = findViewById(R.id.turn_off_ai);
+        //Buttons to turn ML on/off
+        turn_ml_on = findViewById(R.id.turn_on_ml);
+        turn_ml_off = findViewById(R.id.turn_off_ml);
 
-        turn_ai_off.setOnClickListener(view -> {
-            //Set AI to OFF in database
-            FirebaseDatabase.getInstance().getReference("Blinds").child(serial).child("AI").setValue("OFF");
+        turn_ml_off.setOnClickListener(view -> {
+            //Set ML to OFF in database
+            FirebaseDatabase.getInstance().getReference("Blinds").child(serial).child("ML").setValue("OFF");
             get_current(serial);
-            Toast.makeText(this, "AI Mode Disabled!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "ML Mode Disabled!", Toast.LENGTH_SHORT).show();
         });
 
-        turn_ai_on.setOnClickListener(view -> {
-            //Set AI to ON in database
-            FirebaseDatabase.getInstance().getReference("Blinds").child(serial).child("AI").setValue("ON");
+        turn_ml_on.setOnClickListener(view -> {
+            //Set ML to ON in database
+            FirebaseDatabase.getInstance().getReference("Blinds").child(serial).child("ML").setValue("ON");
 
-            //By turing on AI, we disable schedule mode automatically
+            //By turing on ML, we disable schedule mode automatically
             FirebaseDatabase.getInstance().getReference("Blinds").child(serial).child("schedule").child("ON").setValue("FALSE");
             get_current(serial);
-            Toast.makeText(this, "AI Mode Enabled!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "ML Mode Enabled!", Toast.LENGTH_SHORT).show();
         });
 
         //Roll Blinds Up
@@ -70,8 +69,8 @@ public class CurrentBlind extends AppCompatActivity {
             FirebaseDatabase.getInstance().getReference("Blinds/" + serial + "/Operation").setValue("Manual");
             FirebaseDatabase.getInstance().getReference("Blinds/" + serial + "/Blind_State").setValue(1);
 
-            //Disable AI in database
-            FirebaseDatabase.getInstance().getReference("Blinds").child(serial).child("AI").setValue("OFF");
+            //Disable ML in database
+            FirebaseDatabase.getInstance().getReference("Blinds").child(serial).child("ML").setValue("OFF");
 
             get_current(serial);
 
@@ -84,8 +83,8 @@ public class CurrentBlind extends AppCompatActivity {
             FirebaseDatabase.getInstance().getReference("Blinds/" + serial + "/Operation").setValue("Manual");
             FirebaseDatabase.getInstance().getReference("Blinds/" + serial + "/Blind_State").setValue(0);
 
-            //Disable AI in database
-            FirebaseDatabase.getInstance().getReference("Blinds").child(serial).child("AI").setValue("OFF");
+            //Disable ML in database
+            FirebaseDatabase.getInstance().getReference("Blinds").child(serial).child("ML").setValue("OFF");
 
             get_current(serial);
 
@@ -130,14 +129,14 @@ public class CurrentBlind extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                //Buttons to turn AI on/off
-                String ai = dataSnapshot.child("AI").getValue(String.class);
-                if (ai.equals("ON")){
-                    turn_ai_off.setVisibility(View.VISIBLE);
-                    turn_ai_on.setVisibility(View.GONE);
+                //Buttons to turn ML on/off
+                String ml = dataSnapshot.child("ML").getValue(String.class);
+                if (ml.equals("ON")){
+                    turn_ml_off.setVisibility(View.VISIBLE);
+                    turn_ml_on.setVisibility(View.GONE);
                 } else{
-                    turn_ai_off.setVisibility(View.GONE);
-                    turn_ai_on.setVisibility(View.VISIBLE);
+                    turn_ml_off.setVisibility(View.GONE);
+                    turn_ml_on.setVisibility(View.VISIBLE);
                 }
 
             }

@@ -19,7 +19,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <Button
-            android:id="@+id/turn_off_ai"
+            android:id="@+id/turn_off_ml"
             android:layout_width="90dp"
             android:layout_height="37dp"
             android:layout_marginEnd="16dp"
@@ -30,14 +30,14 @@
             android:shadowDx="5"
             android:shadowDy="5"
             android:shadowRadius="2"
-            android:text="turn ai off"
+            android:text="turn ml off"
             android:textColor="#F8F7F7"
             android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 
         <Button
-            android:id="@+id/turn_on_ai"
+            android:id="@+id/turn_on_ml"
             android:layout_width="90dp"
             android:layout_height="37dp"
             android:layout_marginEnd="16dp"
@@ -48,7 +48,7 @@
             android:shadowDx="5"
             android:shadowDy="5"
             android:shadowRadius="2"
-            android:text="turn ai on"
+            android:text="turn ml on"
             android:textColor="#F8F7F7"
             android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="parent"
