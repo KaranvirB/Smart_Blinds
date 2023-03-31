@@ -249,7 +249,7 @@ void loop() {
   //delay the loop to one second, 600 seconds equals 10 min, every 10 minutes upload current sensor values to database
   iteration++;
   delay(1000);
-  if (iteration == 600){
+  if (iteration == 1){
     Firebase.setString(firebaseData, "/Blinds/" + SERIAL_NUM + "/Current/RTC", date);
     Firebase.setFloat(firebaseData, "/Blinds/" + SERIAL_NUM + "/Current/Temp", tempC);
     Firebase.setInt(firebaseData, "/Blinds/" + SERIAL_NUM + "/Current/Light", light); 
