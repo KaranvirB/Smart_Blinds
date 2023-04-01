@@ -2,7 +2,7 @@
 <img src= "https://github.com/NathanBoj/Smart_Blinds/blob/main/images/poster.jpg" width=100% height=100%>
 
 ## App Installation:
-Using your favourite Android device, install the APK [here.](https://github.com/NathanBoj/Smart_Blinds/tree/main/app/release)
+Using your favourite Android device, install the APK [here.](https://github.com/NathanBoj/Smart_Blinds/tree/main/Smart_Blinds_App/SmartyBlinds/app/release)
 (must allow installations from uknown sources)
 
 ## Functionality
