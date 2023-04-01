@@ -69,8 +69,9 @@ public class CurrentBlind extends AppCompatActivity {
             FirebaseDatabase.getInstance().getReference("Blinds/" + serial + "/Operation").setValue("Manual");
             FirebaseDatabase.getInstance().getReference("Blinds/" + serial + "/Blind_State").setValue(1);
 
-            //Disable ML in database
+            //Disable ML and Schedule in database
             FirebaseDatabase.getInstance().getReference("Blinds").child(serial).child("ML").setValue("OFF");
+            FirebaseDatabase.getInstance().getReference("Blinds").child(serial).child("schedule").child("ON").setValue("FALSE");
 
             get_current(serial);
 
@@ -83,8 +84,9 @@ public class CurrentBlind extends AppCompatActivity {
             FirebaseDatabase.getInstance().getReference("Blinds/" + serial + "/Operation").setValue("Manual");
             FirebaseDatabase.getInstance().getReference("Blinds/" + serial + "/Blind_State").setValue(0);
 
-            //Disable ML in database
+            //Disable ML and Schedule in database
             FirebaseDatabase.getInstance().getReference("Blinds").child(serial).child("ML").setValue("OFF");
+            FirebaseDatabase.getInstance().getReference("Blinds").child(serial).child("schedule").child("ON").setValue("FALSE");
 
             get_current(serial);
 
