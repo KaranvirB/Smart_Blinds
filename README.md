@@ -3,7 +3,7 @@
 
 ## App Installation:
 Using your favourite Android device, install the APK [here.](https://github.com/NathanBoj/Smart_Blinds/tree/main/Smart_Blinds_App/SmartyBlinds/app/release)
-(must allow installations from uknown sources)
+(must allow installations from unknown sources)
 
 ## Functionality
 ### Login Page
