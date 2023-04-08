@@ -85,7 +85,7 @@
             android:layout_height="48dp"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="16dp"
-            android:background="#87523B"
+            android:background="#4A9C41"
             android:fontFamily="sans-serif-condensed-medium"
             android:shadowColor="#000000"
             android:shadowDx="5"

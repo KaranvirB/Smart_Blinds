@@ -16,12 +16,13 @@ import com.google.firebase.database.FirebaseDatabase;
 public class light_schedule extends AppCompatActivity {
 
     EditText set_light;
-    Button create_schedule2, back6;
+    Button create_schedule2, back6, sun, moon;
     int operation = 3;
     RadioGroup set_operation2;
 
     int light = 0;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +36,17 @@ public class light_schedule extends AppCompatActivity {
         //Set Light
         set_light = findViewById(R.id.set_light);
 
+        //Sun button
+        sun = findViewById(R.id.sun);
+        sun.setOnClickListener(view -> {
+            set_light.setText(Integer.toString(630));
+        });
+
+        //Moon button
+        moon = findViewById(R.id.moon);
+        moon.setOnClickListener(view -> {
+            set_light.setText(Integer.toString(500));
+        });
 
         //Set the operation
         set_operation2 = findViewById(R.id.set_operation2);

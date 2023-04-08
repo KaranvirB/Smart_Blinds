@@ -75,7 +75,7 @@ public class temp_schedule extends AppCompatActivity {
 
             //Update database with schedule values
             FirebaseDatabase.getInstance().getReference("Blinds/" + serial + "/schedule/type").setValue("temp");
-            FirebaseDatabase.getInstance().getReference("Blinds/" + serial + "/schedule/light").setValue(temp);
+            FirebaseDatabase.getInstance().getReference("Blinds/" + serial + "/schedule/temp").setValue(temp);
             FirebaseDatabase.getInstance().getReference("Blinds/" + serial + "/schedule/operation").setValue(operation);
 
             Toast.makeText(this, "Successfully created temperature schedule!", Toast.LENGTH_SHORT).show();

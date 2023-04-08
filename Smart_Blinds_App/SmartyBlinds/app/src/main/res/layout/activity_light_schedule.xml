@@ -8,8 +8,8 @@
     android:background="@drawable/livingroom">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="335dp"
-        android:layout_height="341dp"
+        android:layout_width="332dp"
+        android:layout_height="423dp"
         android:background="@drawable/roundbox"
         android:backgroundTint="#E1978368"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -36,9 +36,9 @@
 
         <EditText
             android:id="@+id/set_light"
-            android:layout_width="268dp"
+            android:layout_width="300dp"
             android:layout_height="44dp"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="16dp"
             android:background="#FFFFFF"
             android:backgroundTint="#A6FFFFFF"
             android:ems="10"
@@ -49,8 +49,9 @@
             android:textColor="#000000"
             android:textColorHint="#000000"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.469"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/temp" />
+            app:layout_constraintTop_toBottomOf="@+id/moon" />
 
         <TextView
             android:id="@+id/greeting4"
@@ -98,7 +99,7 @@
             android:id="@+id/greeting9"
             android:layout_width="300dp"
             android:layout_height="33dp"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="16dp"
             android:background="#000000"
             android:backgroundTint="#DD000000"
             android:fontFamily="sans-serif-condensed-medium"
@@ -113,7 +114,6 @@
             android:textStyle="bold"
             android:typeface="normal"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.457"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/set_light" />
 
@@ -169,6 +169,42 @@
                 android:text="Rolled Down"
                 android:textColor="#FFFFFF" />
         </RadioGroup>
+
+        <Button
+            android:id="@+id/sun"
+            android:layout_width="140dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="16dp"
+            android:background="#87523B"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:shadowColor="#000000"
+            android:shadowDx="5"
+            android:shadowDy="5"
+            android:shadowRadius="2"
+            android:text="☀️"
+            android:textColor="#F8F7F7"
+            android:textSize="34sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/temp" />
+
+        <Button
+            android:id="@+id/moon"
+            android:layout_width="140dp"
+            android:layout_height="70dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="12dp"
+            android:background="#87523B"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:shadowColor="#000000"
+            android:shadowDx="5"
+            android:shadowDy="5"
+            android:shadowRadius="2"
+            android:text="🌒"
+            android:textColor="#F8F7F7"
+            android:textSize="34sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/temp" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -12,10 +12,10 @@
 
 #define FIREBASE_HOST "smartyblinds-default-rtdb.firebaseio.com"
 #define FIREBASE_AUTH "NOz1XtY3HqrdACe7qDnARnkuy8NFnL3N3JY9Vsjl"
-// #define WIFI_SSID "HoneyPot"
-// #define WIFI_PASSWORD "12345678"
-#define WIFI_SSID "1800Unit213"
-#define WIFI_PASSWORD "1800U213"
+#define WIFI_SSID "HoneyPot"
+#define WIFI_PASSWORD "12345678"
+// #define WIFI_SSID "1800Unit213"
+// #define WIFI_PASSWORD "1800U213"
 FirebaseData firebaseData;
 
 //Set the specific serial number of this blind
@@ -34,10 +34,10 @@ int lightPin = A4;
 
 DHT dht(DHTPIN, DHTTYPE);
 
-// char *ssid = "HoneyPot";  //  WiFi credentials and setup
-// char *password = "12345678";
-char *ssid = "1800Unit213";  //  WiFi credentials and setup
-char *password = "1800U213";
+char *ssid = "HoneyPot";  //  WiFi credentials and setup
+char *password = "12345678";
+// char *ssid = "1800Unit213";  //  WiFi credentials and setup
+// char *password = "1800U213";
 const int GMT = -5; // Time zone constant - change as required for your location
 
 RTCZero rtc_wifi;
