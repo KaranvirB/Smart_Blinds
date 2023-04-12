@@ -2,10 +2,10 @@
 <img src= "https://github.com/NathanBoj/Smart_Blinds/blob/main/images/poster.jpg" width=100% height=100%>
 
 ## IKEA Fyrtur Blinds
-<img src= "https://github.com/NathanBoj/Smart_Blinds/blob/main/images/physical.jpg" >
+<img src= "https://github.com/NathanBoj/Smart_Blinds/blob/main/images/physical.jpg" width=60% height=60%>
 
 ## Machine Learning
-<img src= "https://github.com/NathanBoj/Smart_Blinds/blob/main/images/ml_diagram.png" width=20% height=20%>
+<img src= "https://github.com/NathanBoj/Smart_Blinds/blob/main/images/ml_diagram.png" width=60% height=60%>
 
 ## Sequence Diagram
 <img src= "https://github.com/NathanBoj/Smart_Blinds/blob/main/images/manual_seq.png" >
