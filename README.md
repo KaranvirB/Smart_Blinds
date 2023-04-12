@@ -9,8 +9,8 @@
 
 ## Sequence Diagram
 <img src= "https://github.com/NathanBoj/Smart_Blinds/blob/main/images/manual_seq.png" >
-<img src= "https://github.com/NathanBoj/Smart_Blinds/blob/main/images/sched_seq.png" >
-<img src= "https://github.com/NathanBoj/Smart_Blinds/blob/main/images/auto_seq.png" >
+<img src= "https://github.com/NathanBoj/Smart_Blinds/blob/main/images/sched_seq.png"width=60% height=60%>
+<img src= "https://github.com/NathanBoj/Smart_Blinds/blob/main/images/auto_seq.png" width=60% height=60%>
 
 ## Mobile Application
 ### App Installation:
