@@ -1,11 +1,21 @@
 # Smart_Blinds CAPSTONE 2023
 <img src= "https://github.com/NathanBoj/Smart_Blinds/blob/main/images/poster.jpg" width=100% height=100%>
 
-## App Installation:
+## IKEA Fyrtur Blinds
+<img src= "https://github.com/NathanBoj/Smart_Blinds/blob/main/images/physical.jpg" width=20% height=20%>
+
+## Machine Learning
+<img src= "https://github.com/NathanBoj/Smart_Blinds/blob/main/images/ml_diagram.jpg" width=20% height=20%>
+
+## Sequence Diagram
+<img src= "https://github.com/NathanBoj/Smart_Blinds/blob/main/images/manual_seq.png" width=20% height=20%>
+<img src= "https://github.com/NathanBoj/Smart_Blinds/blob/main/images/sched_seq.png" width=20% height=20%>
+<img src= "https://github.com/NathanBoj/Smart_Blinds/blob/main/images/auto_seq.png" width=20% height=20%>
+
+## Mobile Application
+### App Installation:
 Using your favourite Android device, install the APK [here.](https://github.com/NathanBoj/Smart_Blinds/tree/main/Smart_Blinds_App/SmartyBlinds/app/release)
 (must allow installations from unknown sources)
-
-## Functionality
 ### Login Page
 <img src= "https://github.com/NathanBoj/Smart_Blinds/blob/main/images/login.jpg" width=20% height=20%>
 
