@@ -7,9 +7,14 @@
 ## Machine Learning
 <img src= "https://github.com/NathanBoj/Smart_Blinds/blob/main/images/ml_diagram.png" width=60% height=60%>
 
-## Sequence Diagram
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The machine learning model above shows the manual and scheduled modes being recorded for training data. The python webserver will know what type of operation to perform based on the corresponding firebase values the user updates while selecting a mode. The current sensor data is compared when an active schedule is set, or is predicted when the autonomous ML mode is set. In training, we iterate through all the possible parameters including gini, entropy, max_depth,and  max_leaf_nodes, and then save the parameters which result in the highest accuracy.
+
+## Sequence Diagrams
+- Manual
 <img src= "https://github.com/NathanBoj/Smart_Blinds/blob/main/images/manual_seq.png" >
+- Schedule
 <img src= "https://github.com/NathanBoj/Smart_Blinds/blob/main/images/sched_seq.png"width=60% height=60%>
+- Machine Learning
 <img src= "https://github.com/NathanBoj/Smart_Blinds/blob/main/images/auto_seq.png" width=60% height=60%>
 
 ## Mobile Application
